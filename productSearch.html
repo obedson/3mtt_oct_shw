@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Search</title>
+    <link rel="stylesheet" href="/assets/css/productSearch.css">
+
+    <!-- Leaflet CSS for map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+    <!-- Firebase SDKs -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.1.3/firebase-firestore.js"></script>
+
+    <!-- jQuery for easier DOM manipulation -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="/assets/images/ttracker_logo.png" alt="Trash Tracker Logo">
+            </div>
+
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span class="hamburger">&#9776;</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="productSearch.html">Find Products</a></li>
+                <li><a href="#settings.html">ABOUT US</a></li>
+                <li><a href="#help.html">SERVICES</a></li>
+                <li><a href="#settings.html">RECYCLING</a></li>
+                <li><a href="#elp.html">BLOG</a></li>
+                <li><a href="#help.html">CONTACT</a></li>
+                <li><a href="#help.html">CLIENTS</a></li>
+                <li><a href="form.html">ENTER LOCATION</a></li>
+            </ul>
+            <div class="profile-icon">
+                <img src="assets/images/profile_icon.jpg" alt="Profile Icon" class="profile-logo">
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Find Products Near You</h2>
+        <label for="location-input">Enter Your Location:</label>
+        <input type="text" id="location-input" placeholder="Start typing a location">
+        <ul id="location-suggestions"></ul> <!-- Suggestions appear here -->
+
+        <label for="product-input">Enter Product Name:</label>
+        <input type="text" id="product-input" placeholder="Enter a product name">
+
+        <button id="search-button">Search</button>
+    </div>
+    <div id="product-results"></div>
+    
+    <div id="map" style="display: none;"></div> <!-- Hidden map for obtaining userLat and userLng -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script type="module" src="/assets/js/productSearch.js"></script>
+
+    <script>
+        function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
+}
+    </script>
+</body>
+</html>

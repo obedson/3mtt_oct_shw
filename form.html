@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Location Form</title>
+    <link rel="stylesheet" href="/assets/css/form.css">
+    <!-- Add Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <!-- Optional: Add a CSS library for styling the suggestion list -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="/assets/images/ttracker_logo.png" alt="Trash Tracker Logo">
+            </div>
+            
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span class="hamburger">&#9776;</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="productSearch.html">Find Products</a></li>
+                <li><a href="#profile.html">OUR PEOPLE</a></li>
+                <li><a href="#help.html">SERVICES</a></li>
+                <li><a href="#settings.html">RECYCLING</a></li>
+                <li><a href="#elp.html">BLOG</a></li>
+                <li><a href="#help.html">CONTACT</a></li>
+                <li><a href="#help.html">CLIENTS</a></li>
+                <li><a href="form.html">ENTER LOCATION</a></li>
+            </ul>
+            <div class="profile-icon">
+                <img src="assets/images/profile_icon.jpg" alt="Profile Icon" class="profile-logo">
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Enter Location</h2>
+        <form id="location-form">
+            <label for="location-name">Shop Location:</label>
+            <input type="text" id="location-name" name="location-name" autocomplete="on" placeholder="Enter shop location">
+            <ul id="location-suggestions"></ul> <!-- To display location suggestions -->
+            <label for="full-address">Full Address:</label>
+            <textarea id="full-address" name="full-address" placeholder="Enter full address"></textarea>
+
+            
+            <label for="product-name">Product Name :</label>
+            <textarea id="product-name" name="product-name" placeholder="Enter product name"></textarea>
+
+            <label for="product-price">Product Price :</label>
+            <textarea id="product-price" name="product-price" placeholder="Enter product price"></textarea>
+
+            <label for="seller-phone">Phone Number:</label>
+            <textarea id="seller-phone" name="seller-phone" placeholder="Enter phone number"></textarea>
+
+
+            <label for="product-category">Product Category:</label>
+            <select id="product-category" name="product-category">
+                <option value="">Select a product category</option>
+                <option value="grocery">Grocery</option>
+                <option value="fashion">Fashion</option>
+                <option value="Electronics">Electronics</option>
+                <option value="transportation">Transportation</option>
+                <option value="fuel">Fuel</option>
+                <option value="services">Services</option>
+                <option value="phone-accessories">Phone/Accessories</option>
+                <!-- Add more options as needed -->
+            </select>
+
+            <label for="product-description">Product Description:</label>
+            <textarea id="product-description" name="product-description" placeholder="Enter description"></textarea>
+
+            <label for="image-upload">Upload Product Image:</label>
+            <input type="file" id="image-upload" name="image-upload">
+
+            <input type="hidden" id="latitude" name="latitude">
+            <input type="hidden" id="longitude" name="longitude">
+
+            <button type="button" id="submit-button">Submit</button>
+        </form>
+    </div>
+
+    <!-- Add Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <!-- Add Leaflet Control Geocoder JS -->
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script type="module" src="/assets/js/form.js"></script>
+
+    
+    <script>
+        function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
+}
+    </script>
+    
+</body>
+</html>
+
+
