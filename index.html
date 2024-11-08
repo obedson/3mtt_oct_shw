@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trash Tracker - Home</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="images/ttracker_logo.png" alt="Trash Tracker Logo">
+            </div>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span class="hamburger">&#9776;</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="#settings.html">ABOUT US</a></li>
+                <li><a href="#profile.html">OUR PEOPLE</a></li>
+                <li><a href="#help.html">SERVICES</a></li>
+                <li><a href="#settings.html">RECYCLING</a></li>
+                <li><a href="#elp.html">BLOG</a></li>
+                <li><a href="#help.html">CONTACT</a></li>
+                <li><a href="#help.html">CLIENTS</a></li>
+                <li><a href="form.html">ENTER LOCATION</a></li>
+            </ul>
+            <div class="profile-icon">
+                <img src="images/profile_icon.jpg" alt="Profile Icon" class="profile-logo">
+            </div>
+        </nav>
+    </header>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+        <input id="location-search" type="hidden" placeholder="Search trash pickup or drop-off locations" class="search-bar">
+        <select id="waste-category">
+            <option value="">Select Waste Type</option>
+            <option value="industrial-waste">Industrial Waste</option>
+            <option value="hazardous">Hazardous</option>
+            <option value="organic">Organic</option>
+            <option value="metal">Metal</option>
+            <option value="glass">Glass</option>
+            <option value="plastic">Plastic</option>
+            <option value="paper">Paper</option>
+            <option value="e-waste">E-Waste</option>
+        </select>
+    </div>
+
+    <ul id="suggestions"></ul>
+
+    <main>
+        <div id="map" class="map-container"></div>
+
+        <section class="recent-activities">
+            <h2>Recent Pickups/Drop-offs</h2>
+            <ul>
+                <li>Location: Park Ave | Category: Recyclable | Status: Picked up</li>
+                <li>Location: 5th St | Category: Organic | Status: Dropped off</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <nav>
+            <a href="profile.html">Profile</a>
+            <a href="settings.html">Settings</a>
+            <a href="help.html">Help</a>
+        </nav>
+    </footer>
+
+    <script type="module" src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+    <script type="module" src="search.js"></script>
+    <script type="module" src="map.js"></script>
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
