@@ -42,23 +42,15 @@ async function getProductDetails() {
     }
 }
 
-// Function to handle 'Buy Now' button click
 window.handleBuyNowButton = function(sellerPhone) {
+    if (!sellerPhone || !/^\d+$/.test(sellerPhone)) {
+        alert("Invalid phone number. Please contact the seller directly.");
+        return;
+    }
     const whatsappUrl = `https://wa.me/${sellerPhone}`;
-    const timeoutDuration = 1000; // Time to wait before showing the phone number as a fallback
+    window.location.href = whatsappUrl;
+};
 
-    // Try opening WhatsApp using an iframe
-    const iframe = document.createElement('iframe');
-    iframe.style.display = 'none';
-    iframe.src = whatsappUrl;
-    document.body.appendChild(iframe);
-
-    // Fallback to showing the phone number if WhatsApp isn't detected
-    setTimeout(() => {
-        document.body.removeChild(iframe);
-        alert(`WhatsApp not detected. You can contact the seller directly at: ${sellerPhone}`);
-    }, timeoutDuration);
-}
 
 
 // Function to display product details on the page
