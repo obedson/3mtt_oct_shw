@@ -17,6 +17,74 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+document.addEventListener("DOMContentLoaded", () => {
+    setupCarousel();
+    loadSponsoredProducts();
+    setupSidebar();
+});
+
+// Self-Scrolling Carousel
+function setupCarousel() {
+    const carousel = document.querySelector(".carousel");
+    const items = carousel.querySelectorAll(".carousel-item");
+    let currentIndex = 0;
+
+    // Clone the first and last items
+    const firstClone = items[0].cloneNode(true);
+    const lastClone = items[items.length - 1].cloneNode(true);
+    carousel.appendChild(firstClone);
+    carousel.insertBefore(lastClone, items[0]);
+
+    // Function to move the carousel
+    function moveCarousel() {
+        if (currentIndex >= items.length) {
+            carousel.style.transition = "none";
+            currentIndex = 0;
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+        } else {
+            carousel.style.transition = "transform 0.5s ease-in-out";
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+        currentIndex++;
+    }
+
+    // Change every 3 seconds
+    setInterval(moveCarousel, 3000);
+}
+
+// Initialize the carousel
+setupCarousel();
+
+
+// Load Sponsored Products
+async function loadSponsoredProducts() {
+    const sponsoredSection = document.querySelector(".sponsored-section");
+    const querySnapshot = await getDocs(collection(db, "sponsoredProducts"));
+
+    querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const productCard = `
+            <div class="product-card">
+                <img src="${data.imageUrl}" alt="${data.name}" width="80">
+                <div>
+                    <h3>${data.name}</h3>
+                    <p>${data.description}</p>
+                </div>
+            </div>
+        `;
+        sponsoredSection.insertAdjacentHTML("beforeend", productCard);
+    });
+}
+
+/* Sidebar Ads
+function setupSidebar() {
+    const sidebar = document.querySelector(".sidebar");
+    sidebar.innerHTML = `
+        <h3>Advertisements</h3>
+        <p>Ad content goes here.</p>
+    `;
+}
+    */
 // Variables for selected coordinates
 let userLat, userLng;
 

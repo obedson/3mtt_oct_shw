@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Search</title>
-    <link rel="stylesheet" href="./assets/css/productSearch.css">
+    <link rel="stylesheet" href="assets/css/productSearch.css">
 
     <!-- Leaflet CSS for map -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
@@ -21,22 +21,17 @@
     <header>
         <nav class="navbar">
             <div class="logo">
-                <img src="assets/images/ttracker_logo.png" alt="Trash Tracker Logo">
+                <img src="./assets/images/profile_icon.gif" alt="Price Updates Logo">
             </div>
 
             <div class="menu-toggle" onclick="toggleMenu()">
                 <span class="hamburger">&#9776;</span>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">HOME</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="productSearch.html">Find Products</a></li>
-                <li><a href="#settings.html">ABOUT US</a></li>
-                <li><a href="#help.html">SERVICES</a></li>
-                <li><a href="#settings.html">RECYCLING</a></li>
-                <li><a href="#elp.html">BLOG</a></li>
-                <li><a href="#help.html">CONTACT</a></li>
-                <li><a href="#help.html">CLIENTS</a></li>
-                <li><a href="form.html">ENTER LOCATION</a></li>
+                <li><a href="form.html">Upload Shop Location</a></li>
+                <li><a href="team.html">Abut Us</a></li>
             </ul>
             <div class="profile-icon">
                 <img src="assets/images/profile_icon.jpg" alt="Profile Icon" class="profile-logo">
@@ -46,11 +41,8 @@
 
     <div class="container">
         <h2>Find Products Near You</h2>
-        <label for="location-input">Enter Your Location:</label>
         <input type="text" id="location-input" placeholder="Start typing a location">
         <ul id="location-suggestions"></ul> <!-- Suggestions appear here -->
-
-        <label for="product-input">Enter Product Name:</label>
         <input type="text" id="product-input" placeholder="Enter a product name">
 
         <button id="search-button">Search</button>
@@ -58,8 +50,26 @@
     <div id="product-results"></div>
     
     <div id="map" style="display: none;"></div> <!-- Hidden map for obtaining userLat and userLng -->
+
+
+    <main>
+
+        <section class="sponsored-section">
+            <h2>Sponsored Products:</h2>
+            <h5>Coming Soon</h5>
+        </section>
+
+        <aside class="sidebar"></aside>
+    </main>
+    <footer>
+        <p>Follow us: 
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+        </p>
+    </footer>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script type="module" src="./assets/js/productSearch.js"></script>
+    <script type="module" src="/assets/js/productSearch.js"></script>
 
     <script>
         function toggleMenu() {

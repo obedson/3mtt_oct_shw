@@ -1,86 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trash Tracker - Home</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Price Updates</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
     <header>
-        <nav class="navbar">
-            <div class="logo">
-                <img src="./images/ttracker_logo.png" alt="Trash Tracker Logo">
-            </div>
-            <div class="menu-toggle" onclick="toggleMenu()">
-                <span class="hamburger">&#9776;</span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">HOME</a></li>
-                <li><a href="#settings.html">ABOUT US</a></li>
-                <li><a href="#profile.html">OUR PEOPLE</a></li>
-                <li><a href="#help.html">SERVICES</a></li>
-                <li><a href="#settings.html">RECYCLING</a></li>
-                <li><a href="#elp.html">BLOG</a></li>
-                <li><a href="#help.html">CONTACT</a></li>
-                <li><a href="#help.html">CLIENTS</a></li>
-                <li><a href="form.html">ENTER LOCATION</a></li>
-            </ul>
-            <div class="profile-icon">
-                <img src="./images/profile_icon.jpg" alt="Profile Icon" class="profile-logo">
-            </div>
-        </nav>
+      <nav class="navbar">
+        <img
+          class="logo"
+          src="./assets/images/profile_icon.jpg"
+          alt="Price Updates Logo"
+        />
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="productSearch.html">Search Prices</a></li>
+          <li><a href="form.html">Share Shop Lcation</a></li>
+          <li><a href="#team.html">About Us</a></li>
+          <!-- <li><a href="#contact-us">CONTACT US</a></li> -->
+        </ul>
+        <div class="profile-icon">
+          <img
+            src="./assets/images/profile_icon.gif"
+            alt="Profile Icon"
+            class="profile-logo"
+          />
+          <!-- <div class="menu-toggle" onclick="toggleMenu()"> -->
+          <span onclick="toggleMenu()" class="hamburger">&#9776;</span>
+          <!-- </div> -->
+        </div>
+      </nav>
+      <ul class="mobile">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="productSearch.html">Search Prices</a></li>
+        <li><a href="form.html">Share Shop Lcation</a></li>
+        <li><a href="#team.html">About Us</a></li>
+        <!-- <li><a href="#contact-us">CONTACT US</a></li> -->
+      </ul>
     </header>
 
-    <!-- Search Bar -->
-    <div class="search-container">
-        <input id="location-search" type="hidden" placeholder="Search trash pickup or drop-off locations" class="search-bar">
-        <select id="waste-category">
-            <option value="">Select Waste Type</option>
-            <option value="industrial-waste">Industrial Waste</option>
-            <option value="hazardous">Hazardous</option>
-            <option value="organic">Organic</option>
-            <option value="metal">Metal</option>
-            <option value="glass">Glass</option>
-            <option value="plastic">Plastic</option>
-            <option value="paper">Paper</option>
-            <option value="e-waste">E-Waste</option>
-        </select>
-    </div>
-
-    <ul id="suggestions"></ul>
-
+    <!-- Main Content Section -->
     <main>
-        <div id="map" class="map-container"></div>
+      <!-- Waste Type Carousel Section -->
+      <section class="carousel-section">
+        <div class="carousel">
+          <div class="slide">
+            <img
+              src="./assets/images/PC Headset Gaming Headset.PNG"
+              alt="Gaming Headset"
+            />
+          </div>
+          <div class="slide">
+            <img
+              src="./assets/images/TF200 gaming keyboard.PNG"
+              alt="Gaming Keyboard"
+            />
+          </div>
+          <div class="slide">
+            <img
+              src="./assets/images/wifi_1.jpg"
+              alt=" Wifi Extender"
+            />
+          </div>
+          <div class="slide">
+            <img
+              src="./assets/images/laptop2.jpg"
+              alt="Laptop"
+            />
+          </div>
+          <div class="slide">
+            <img
+              src="./assets/images/Sport Shoes Men Lightweight Running Sneakers Red.PNG"
+              alt="Lightweight  Sport Shoes"
+            />
+          </div>
+          <div class="slide">
+            <img
+              src="./assets/images/shoe1.jpg"
+              alt="Sports Shoe"
+            />
+          </div>
+        </div>
+      </section>
 
-        <section class="recent-activities">
-            <h2>Recent Pickups/Drop-offs</h2>
-            <ul>
-                <li>Location: Park Ave | Category: Recyclable | Status: Picked up</li>
-                <li>Location: 5th St | Category: Organic | Status: Dropped off</li>
-            </ul>
-        </section>
+      <!-- Description & Call-to-Action Section -->
+      <section class="cta-section">
+        <h2>Welcome to Price Updates, <br> your go-to platform for staying informed about the prices of  
+          products and services in your area.</h2>
+        
+        <a href="productSearch.html"
+          ><button class="cta-button">Get Started</button></a
+        >
+      </section>
+
+      <!-- Global Waste Data Representation Section -->
+      <section class="data-section">
+        <h2>Trending Locations</h2>
+        <div class="chart-container">
+          <canvas id="myChart"></canvas>
+        </div>
+        <!-- <div class="chart-container">
+          <img
+            src="https://datatopics.worldbank.org/what-a-waste/img/v2_projected_waste_generation.png"
+            alt="Waste Data Chart"
+          />
+        </div> -->
+        <p>
+            Our local product listing website empowers you to:
+           <br>Explore: Find the latest prices of goods and services near you.
+           <br>Earn: List products and earn commissions on purchases made through your listings.
+           <br>Advertise: Monetize your pages with ad impressions and grow your earnings effortlessly.
+           <br>Whether you're shopping smart or listing to make extra income, 
+           <br> Price Updates connects your community with convenience and value. 
+           <br>Start today and make the most of every local opportunity!
+         </p>
+      </section>
     </main>
 
+    <!-- Footer Section -->
     <footer>
-        <nav>
-            <a href="profile.html">Profile</a>
-            <a href="settings.html">Settings</a>
-            <a href="help.html">Help</a>
-        </nav>
+      <div class="footer-links">
+        <a href="#">Facebook</a>
+        <a href="#">Twitter</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Instagram</a>
+      </div>
+      <p>&copy; 2024 Obedson Craft. All rights reserved.</p>
     </footer>
-
-    <script type="module" src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="app.js"></script>
-    <script type="module" src="search.js"></script>
-    <script type="module" src="map.js"></script>
-    <script>
-        function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
-        }
-    </script>
-</body>
+    <script type="module" src="./assets/js/chart.js"></script>
+    <script type="module" src="./assets/js/index.js"></script>
+    <script src="./assets/js/util.js "></script>
+  </body>
 </html>

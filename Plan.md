@@ -17,3 +17,4 @@ Click on search button
 Loops through the shop locations in the shopLoctions collection
 Fetch 10 nearest shopLocation, product image, product name,  product price, excerpt of product-description
 Display as suggestions on product cards and when clicked redirects to Products-details page
+
