@@ -151,40 +151,47 @@ $(document).ready(function () {
         return R * c; // Distance in kilometers
     }
 
-    // Function to search for products using Firestore
-    async function searchProducts(productName) {
-        try {
-            const querySnapshot = await getDocs(collection(db, 'shopLocations'));
-            const productList = [];
+   // Function to search for products using Firestore
+async function searchProducts(productName) {
+    try {
+        const querySnapshot = await getDocs(collection(db, 'shopLocations'));
+        const productList = [];
 
-            querySnapshot.forEach((doc) => {
-                const data = doc.data();
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
 
-                if (data.productName && data.productName.toLowerCase().includes(productName.toLowerCase())) {
-                    // Calculate distance from user location
-                    const distance = calculateDistance(userLat, userLng, data.latitude, data.longitude);
-                    productList.push({
-                        ...data,
-                        shopId: doc.id,
-                        distance
-                    });
-                }
-            });
+            if (data.productName && data.productName.toLowerCase().includes(productName.toLowerCase())) {
+                // Calculate distance from user location
+                const distance = calculateDistance(userLat, userLng, data.latitude, data.longitude);
+                productList.push({
+                    ...data,
+                    shopId: doc.id,
+                    distance
+                });
+            }
+        });
 
-            // Sort products by distance
-            productList.sort((a, b) => a.distance - b.distance);
-
-            // Display sorted products
-            $('#product-results').empty();
-            productList.forEach((product) => {
-                displayProductCard(product);
-            });
-
-            console.log("Searching products near:", userLat, userLng, "for:", productName);
-        } catch (error) {
-            console.error("Error querying products:", error);
+        // Check if no products were found
+        if (productList.length === 0) {
+            alert("No product found: If you find this product, kindly share the shop location");
+            return;
         }
+
+        // Sort products by distance
+        productList.sort((a, b) => a.distance - b.distance);
+
+        // Display sorted products
+        $('#product-results').empty();
+        productList.forEach((product) => {
+            displayProductCard(product);
+        });
+
+        console.log("Searching products near:", userLat, userLng, "for:", productName);
+    } catch (error) {
+        console.error("Error querying products:", error);
     }
+}
+
 
     // Function to display product cards
     function displayProductCard(product) {
