@@ -18,42 +18,9 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 document.addEventListener("DOMContentLoaded", () => {
-    setupCarousel();
     loadSponsoredProducts();
-    setupSidebar();
 });
 
-// Self-Scrolling Carousel
-function setupCarousel() {
-    const carousel = document.querySelector(".carousel");
-    const items = carousel.querySelectorAll(".carousel-item");
-    let currentIndex = 0;
-
-    // Clone the first and last items
-    const firstClone = items[0].cloneNode(true);
-    const lastClone = items[items.length - 1].cloneNode(true);
-    carousel.appendChild(firstClone);
-    carousel.insertBefore(lastClone, items[0]);
-
-    // Function to move the carousel
-    function moveCarousel() {
-        if (currentIndex >= items.length) {
-            carousel.style.transition = "none";
-            currentIndex = 0;
-            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-        } else {
-            carousel.style.transition = "transform 0.5s ease-in-out";
-            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-        }
-        currentIndex++;
-    }
-
-    // Change every 3 seconds
-    setInterval(moveCarousel, 3000);
-}
-
-// Initialize the carousel
-setupCarousel();
 
 
 // Load Sponsored Products
